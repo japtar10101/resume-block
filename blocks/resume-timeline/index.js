@@ -19,12 +19,12 @@
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
 	 */
-	registerBlockType( 'resume/resume-timeline', {
+	registerBlockType( 'resume-block/resume-timeline', {
 		/**
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'Rèsumè Timeline', 'resume' ),
+		title: __( 'Rèsumè Timeline', 'resume-block' ),
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
@@ -52,7 +52,7 @@
 			return el(
 				'p',
 				{ className: props.className },
-				__( 'Hello from the editor!', 'resume' )
+				__( 'Hello from the editor!', 'resume-block' )
 			);
 		},
 
@@ -67,7 +67,7 @@
 			return el(
 				'p',
 				{},
-				__( 'Hello from the saved content!', 'resume' )
+				__( 'Hello from the saved content!', 'resume-block' )
 			);
 		}
 	} );

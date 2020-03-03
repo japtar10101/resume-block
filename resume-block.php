@@ -9,6 +9,7 @@
  * Text Domain: resume-block
  * Domain Path: /languages
  * License: GPL v2
+ * 
  * @package Resume Block
  **/
 if ( ! function_exists( 'resume_block_styles' ) ) :

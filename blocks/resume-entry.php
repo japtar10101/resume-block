@@ -47,7 +47,7 @@ function resume_entry_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	register_block_type( 'resume/resume-entry', array(
+	register_block_type( 'resume-block/resume-entry', array(
 		'editor_script' => 'resume-entry-block-editor',
 		'editor_style'  => 'resume-entry-block-editor',
 		'style'         => 'resume-entry-block',

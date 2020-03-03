@@ -47,7 +47,7 @@ function resume_image_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	register_block_type( 'resume/resume-image', array(
+	register_block_type( 'resume-block/resume-image', array(
 		'editor_script' => 'resume-image-block-editor',
 		'editor_style'  => 'resume-image-block-editor',
 		'style'         => 'resume-image-block',

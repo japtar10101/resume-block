@@ -47,7 +47,7 @@ function resume_timeline_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	register_block_type( 'resume/resume-timeline', array(
+	register_block_type( 'resume-block/resume-timeline', array(
 		'editor_script' => 'resume-timeline-block-editor',
 		'editor_style'  => 'resume-timeline-block-editor',
 		'style'         => 'resume-timeline-block',

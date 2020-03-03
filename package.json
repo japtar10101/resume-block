@@ -3,7 +3,7 @@
   "name": "resume-block",
   "version": "0.1.0",
   "main": "Gruntfile.js",
-  "author": "YOUR NAME HERE",
+  "author": "Taro Omiya",
   "scripts" : {
     "start" : "grunt default" ,
     "readme" : "grunt readme",
