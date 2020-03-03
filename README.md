@@ -1,17 +1,18 @@
 # Rèsumè
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://example.com/
-Tags: comments, spam
-Requires at least: 4.5
-Tested up to: 5.3.2
-Requires PHP: 5.6
-Stable tag: 0.1.0
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+- Contributors: Taro Omiya
+- Donate link: https://example.com/
+- Tags: comments
+- Requires at least: 4.5
+- Tested up to: 5.3.2
+- Requires PHP: 5.6
+- Stable tag: 0.1.0
+- License: GPLv2 or later
+- License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Wordpress plugin that uses Bulma to create a timeline layout, convenient for creating a resume page.
 
-# Description
+## Description
 
 This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
 
@@ -38,7 +39,7 @@ that lacks those changes -- as long as the trunk's `readme.txt` points to the co
     If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
 you put the stable version, in order to eliminate any doubt.
 
-# Installation
+## Installation
 
 This section describes how to install the plugin and get it working.
 
@@ -48,17 +49,17 @@ e.g.
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
 
-# Frequently Asked Questions
+## Frequently Asked Questions
 
-## A question that someone might have
+### A question that someone might have
 
 An answer to that question.
 
-## What about foo bar?
+### What about foo bar?
 
 Answer to foo bar dilemma.
 
-# Screenshots
+## Screenshots
 
 1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
 the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
@@ -66,6 +67,6 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 (or jpg, jpeg, gif).
 2. This is the second screen shot
 
-# Changelog
+## Changelog
 
 See `CHANGELOG.md`
