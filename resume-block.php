@@ -21,7 +21,7 @@ if ( ! function_exists( 'resume_block_styles' ) ) :
 		wp_enqueue_style( 'bulma-timeline', plugins_url( 'bulma/timeline/bulma-timeline.min.css', __FILE__ ), false, '2.3.2', 'all' );
 	}
 endif;
-add_action( 'wp_enqueue_scripts', 'resume_block_styles' );
+add_action( 'enqueue_block_assets', 'resume_block_styles' );
 
 if ( ! function_exists( 'resume_block_scripts' ) ) :
 	/**
