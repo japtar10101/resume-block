@@ -38,6 +38,14 @@
 		parent: [ 'resume-block/resume-timeline' ],
 
 		/**
+		 * Optional block extended support features.
+		 */
+		supports: {
+			// Removes support for an HTML mode.
+			html: false
+		},
+
+		/**
 		 * The edit function describes the structure of your block in the context of the editor.
 		 * This represents what the editor will render when the block is used.
 		 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/block-edit-save/#edit
