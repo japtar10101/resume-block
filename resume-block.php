@@ -14,11 +14,10 @@
  **/
 defined( 'ABSPATH' ) || exit;
 
-include 'blocks/resume-entry.php';
+// Add the 3 resume blocks
 include 'blocks/resume-timeline.php';
-
-// FIXME: consider if this block is actually necessary
-include 'blocks/resume-image.php';
+include 'blocks/resume-marker.php';
+include 'blocks/resume-entry.php';
 
 if ( ! function_exists( 'resume_block_enqueue_style' ) ) :
 	/**

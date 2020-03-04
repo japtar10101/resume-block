@@ -19,26 +19,23 @@
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
 	 */
-	registerBlockType( 'resume-block/resume-image', {
+	registerBlockType( 'resume-block/resume-marker', {
 		/**
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'Rèsumè Image', 'resume-block' ),
+		title: __( 'Rèsumè Marker', 'resume-block' ),
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
 		 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
 		 */
-		category: 'layout',
+		category: 'common',
 
 		/**
-		 * Optional block extended support features.
+		 * Only allow this block when it is nested in a Resume Timeline block.
 		 */
-		supports: {
-			// Removes support for an HTML mode.
-			html: false,
-		},
+		parent: [ 'resume-block/resume-timeline' ],
 
 		/**
 		 * The edit function describes the structure of your block in the context of the editor.

@@ -33,12 +33,9 @@
 		category: 'layout',
 
 		/**
-		 * Optional block extended support features.
+		 * Only allow this block when it is nested in a Resume Timeline block.
 		 */
-		supports: {
-			// Removes support for an HTML mode.
-			html: false,
-		},
+		parent: [ 'resume-block/resume-timeline' ],
 
 		/**
 		 * The edit function describes the structure of your block in the context of the editor.
