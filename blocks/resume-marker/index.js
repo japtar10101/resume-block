@@ -1,19 +1,24 @@
-( function( wp ) {
+( function( blocks, editor, i18n, element ) {
 	/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
 	 */
-	var registerBlockType = wp.blocks.registerBlockType;
+	var registerBlockType = blocks.registerBlockType;
 	/**
 	 * Returns a new element of given type. Element is an abstraction layer atop React.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-element/
 	 */
-	var el = wp.element.createElement;
+	var el = element.createElement;
 	/**
 	 * Retrieves the translation of text.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-i18n/
 	 */
-	var __ = wp.i18n.__;
+	var __ = i18n.__;
+	/**
+	 * Retrieves the rich-text editor.
+	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-editor/
+	 */
+	var RichText = editor.RichText;
 
 	/**
 	 * Every block starts by registering a new block type definition.
@@ -25,7 +30,7 @@
 		 * The block inserter will show this name.
 		 */
 		title: __( 'Rèsumè Marker', 'resume-block' ),
-
+		icon: 'universal-access-alt',
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
 		 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
@@ -36,7 +41,31 @@
 		 * Only allow this block when it is nested in a Resume Timeline block.
 		 */
 		parent: [ 'resume-block/resume-timeline' ],
-
+		/**
+		 * Attributes
+		 */
+		attributes: {
+			content: {
+				type: 'array',
+				source: 'children',
+				selector: 'span',
+			},
+		},
+		/**
+		 * Example string
+		 */
+		example: {
+			attributes: {
+				content: __( 'Marker', 'resume-block' ),
+			},
+		},
+		/**
+		 * Optional block extended support features.
+		 */
+		supports: {
+			// Removes support for an HTML mode.
+			html: false
+		},
 		/**
 		 * The edit function describes the structure of your block in the context of the editor.
 		 * This represents what the editor will render when the block is used.
@@ -46,11 +75,22 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function( props ) {
+			var content = props.attributes.content;
+			function onChangeContent( newContent ) {
+				props.setAttributes( { content: newContent } );
+			}
+
 			return el(
-				'p',
+				'header',
 				{ className: props.className },
-				__( 'Hello from the editor!', 'resume-block' )
+				el( RichText, {
+					tagName: 'span',
+					className: 'tag',
+					onChange: onChangeContent,
+					value: content,
+				} )
 			);
+			return ;
 		},
 
 		/**
@@ -60,14 +100,21 @@
 		 *
 		 * @return {Element}       Element to render.
 		 */
-		save: function() {
+		save: function( props ) {
 			return el(
-				'p',
+				'header',
 				{},
-				__( 'Hello from the saved content!', 'resume-block' )
+				el( RichText.Content, {
+					tagName: 'span',
+					className: 'tag',
+					value: props.attributes.content,
+				} )
 			);
 		}
 	} );
 } )(
-	window.wp
+	window.wp.blocks,
+	window.wp.editor,
+	window.wp.i18n,
+	window.wp.element
 );
