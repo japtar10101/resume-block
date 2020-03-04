@@ -18,7 +18,19 @@
 	 * Retrieves Inner block. Setup to only allow paragraphs (for the time being)
 	 */
 	var InnerBlocks = blockEditor.InnerBlocks;
+
+	// Define the blocks that are allowed
 	const ALLOWED_BLOCKS = [ 'resume-block/resume-entry', 'resume-block/resume-image' ];
+
+	// Force the class to always contain 'timeline'
+	function getClass( props ) {
+		var classes = 'timeline';
+		if( props.className ) {
+			classes += ' ' + props.className;
+		}
+		return classes;
+	}
+	
 	/**
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
@@ -53,14 +65,10 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function( props ) {
-			var classes = 'timeline';
-			if( props.className ) {
-				classes += ' ' + props.className;
-			}
-			console.log(classes);
+			// Create element
 			return el(
 				'div',
-				{ className: classes },
+				{ className: getClass( props ) },
 				el(
 					InnerBlocks,
 					{ allowedBlocks: ALLOWED_BLOCKS },
@@ -76,14 +84,10 @@
 		 * @return {Element}       Element to render.
 		 */
 		save: function( props ) {
-			var classes = 'timeline';
-			if( props.className ) {
-				classes += ' ' + props.className;
-			}
-			console.log(classes);
+			// Create element
 			return el(
 				'div',
-				{ className: classes },
+				{ className: getClass( props ) },
 				el( InnerBlocks.Content )
 			);
 		}
