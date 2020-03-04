@@ -41,7 +41,7 @@
 		 */
 		supports: {
 			// Removes support for an HTML mode.
-			html: false,
+			html: false
 		},
 
 		/**
@@ -53,17 +53,19 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function( props ) {
+			var classes = 'timeline';
+			if( props.className ) {
+				classes += ' ' + props.className;
+			}
+			console.log(classes);
 			return el(
 				'div',
-				{ className: props.className },
+				{ className: classes },
 				el(
 					InnerBlocks,
 					{ allowedBlocks: ALLOWED_BLOCKS },
 				)
 			);
-			// <InnerBlocks
-			// 	allowedBlocks={ ALLOWED_BLOCKS }
-			// />
 		},
 
 		/**
@@ -74,9 +76,14 @@
 		 * @return {Element}       Element to render.
 		 */
 		save: function( props ) {
+			var classes = 'timeline';
+			if( props.className ) {
+				classes += ' ' + props.className;
+			}
+			console.log(classes);
 			return el(
 				'div',
-				{ className: props.className },
+				{ className: classes },
 				el( InnerBlocks.Content )
 			);
 		}
