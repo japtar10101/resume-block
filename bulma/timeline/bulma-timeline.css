@@ -643,7 +643,7 @@
 	left: auto
 }
 
-.wp-block-resume-block-resume-timeline.wp-block-resume-block-resume-marker.is-dark.is-outlined .wp-block-resume-block-resume-entry .timeline-marker {
+.wp-block-resume-block-resume-timeline.is-style-rtl .wp-block-resume-block-resume-entry .timeline-marker {
 	-webkit-transform: translateX(50%);
 	transform: translateX(50%)
 }
