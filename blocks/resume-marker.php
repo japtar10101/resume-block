@@ -28,7 +28,9 @@ if ( ! function_exists( 'resume_marker_block_init' ) ) :
 				'wp-blocks',
 				'wp-i18n',
 				'wp-element',
-				'wp-editor'
+				'wp-editor',
+				// 'wp-plugins',
+				// 'wp-edit-post'
 			),
 			filemtime( "$dir/$index_js" )
 		);

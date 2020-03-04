@@ -32,8 +32,8 @@
 		 * The block inserter will show this name.
 		 */
 		title: __( 'Rèsumè Timeline', 'resume-block' ),
-		description: __( 'Creates a timeline, displaying history of professional experiences.', 'resume-block' ),
-
+		description: __( 'A timeline displaying a history of professional experiences.', 'resume-block' ),
+		icon: 'excerpt-view',
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
 		 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.

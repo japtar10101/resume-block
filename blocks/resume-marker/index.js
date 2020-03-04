@@ -1,4 +1,4 @@
-( function( blocks, editor, i18n, element ) {
+( function( blocks, editor, i18n, element/*, plugins, editPost*/ ) {
 	/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
@@ -19,6 +19,18 @@
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-editor/
 	 */
 	var RichText = editor.RichText;
+	// var registerPlugin = plugins.registerPlugin;
+	// var pluginSidebar = editPost.PluginSidebar;
+	/**
+	 * Retrieves the class for the span tag
+	 */
+	function spanClass( className ) {
+		var returnClass = 'tag';
+		if( className ) {
+			returnClass += ' ' + className;
+		}
+		return returnClass;
+	}
 
 	/**
 	 * Every block starts by registering a new block type definition.
@@ -29,8 +41,9 @@
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'Rèsumè Marker', 'resume-block' ),
-		icon: 'universal-access-alt',
+		title: __( 'Marker', 'resume-block' ),
+		description: __( 'A small marker in the timeline.', 'resume-block' ),
+		icon: 'tag',
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
 		 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
@@ -50,13 +63,20 @@
 				source: 'children',
 				selector: 'span',
 			},
+			class: {
+				type: 'string',
+				source: 'attribute',
+				selector: 'span',
+				attribute: 'class',
+			}
 		},
 		/**
 		 * Example string
 		 */
 		example: {
 			attributes: {
-				content: __( 'Marker', 'resume-block' ),
+				content: [ __( 'Mark', 'resume-block' ) ],
+				class: 'tag is-medium',
 			},
 		},
 		/**
@@ -85,7 +105,7 @@
 				{ className: props.className },
 				el( RichText, {
 					tagName: 'span',
-					className: 'tag',
+					className: spanClass( props.attributes.class ),
 					onChange: onChangeContent,
 					value: content,
 				} )
@@ -103,18 +123,37 @@
 		save: function( props ) {
 			return el(
 				'header',
-				{},
+				{ },
 				el( RichText.Content, {
 					tagName: 'span',
-					className: 'tag',
+					className: spanClass( props.attributes.class ),
 					value: props.attributes.content,
 				} )
 			);
 		}
 	} );
+
+	/**
+	 * Edit sidebar.
+	 * @see https://developer.wordpress.org/block-editor/tutorials/plugin-sidebar-0/
+	 */
+	// registerPlugin( 'resume-block/resume-marker', {
+	// 	render: function() {
+	// 		return el( PluginSidebar,
+	// 			{
+	// 				name: 'resume-block/resume-marker',
+	// 				icon: 'tag',
+	// 				title: __( 'Marker', 'resume-block' ),
+	// 			},
+	// 			'Marker'
+	// 		);
+	// 	},
+	// } );
 } )(
 	window.wp.blocks,
 	window.wp.editor,
 	window.wp.i18n,
-	window.wp.element
+	window.wp.element,
+	// window.wp.plugins,
+	// window.wp.editPost,
 );
