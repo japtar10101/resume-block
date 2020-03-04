@@ -5,6 +5,7 @@
  *
  * @package resume-block
  */
+defined( 'ABSPATH' ) || exit;
 if ( ! function_exists( 'resume_entry_block_init' ) ) :
 	/**
 	 * Registers all block assets so that they can be enqueued through Gutenberg in

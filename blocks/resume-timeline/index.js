@@ -1,20 +1,24 @@
-( function( wp ) {
+( function( blocks, element, blockEditor, i18n ) {
 	/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
 	 */
-	var registerBlockType = wp.blocks.registerBlockType;
+	var registerBlockType = blocks.registerBlockType;
 	/**
 	 * Returns a new element of given type. Element is an abstraction layer atop React.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-element/
 	 */
-	var el = wp.element.createElement;
+	var el = element.createElement;
 	/**
 	 * Retrieves the translation of text.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-i18n/
 	 */
-	var __ = wp.i18n.__;
-
+	var __ = i18n.__;
+	/**
+	 * Retrieves Inner block. Setup to only allow paragraphs (for the time being)
+	 */
+	var InnerBlocks = blockEditor.InnerBlocks;
+	const ALLOWED_BLOCKS = [ 'resume-block/resume-entry', 'resume-block/resume-image' ];
 	/**
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
@@ -50,10 +54,16 @@
 		 */
 		edit: function( props ) {
 			return el(
-				'p',
+				'div',
 				{ className: props.className },
-				__( 'Hello from the editor!', 'resume-block' )
+				el(
+					InnerBlocks,
+					{ allowedBlocks: ALLOWED_BLOCKS },
+				)
 			);
+			// <InnerBlocks
+			// 	allowedBlocks={ ALLOWED_BLOCKS }
+			// />
 		},
 
 		/**
@@ -63,14 +73,17 @@
 		 *
 		 * @return {Element}       Element to render.
 		 */
-		save: function() {
+		save: function( props ) {
 			return el(
-				'p',
-				{},
-				__( 'Hello from the saved content!', 'resume-block' )
+				'div',
+				{ className: props.className },
+				el( InnerBlocks.Content )
 			);
 		}
 	} );
-} )(
-	window.wp
+} ) (
+	window.wp.blocks,
+	window.wp.element,
+	window.wp.blockEditor,
+	window.wp.i18n,
 );

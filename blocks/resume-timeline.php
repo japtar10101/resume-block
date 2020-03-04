@@ -5,6 +5,7 @@
  *
  * @package resume-block
  */
+defined( 'ABSPATH' ) || exit;
 if ( ! function_exists( 'resume_timeline_block_init' ) ) :
 	/**
 	 * Registers all block assets so that they can be enqueued through Gutenberg in
@@ -27,6 +28,7 @@ if ( ! function_exists( 'resume_timeline_block_init' ) ) :
 				'wp-blocks',
 				'wp-i18n',
 				'wp-element',
+				'wp-block-editor'
 			),
 			filemtime( "$dir/$index_js" )
 		);
