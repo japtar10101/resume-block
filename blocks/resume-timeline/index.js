@@ -21,15 +21,6 @@
 
 	// Define the blocks that are allowed
 	const ALLOWED_BLOCKS = [ 'resume-block/resume-entry', 'resume-block/resume-image' ];
-
-	// Force the class to always contain 'timeline'
-	function getClass( props ) {
-		var classes = 'timeline';
-		if( props.className ) {
-			classes += ' ' + props.className;
-		}
-		return classes;
-	}
 	
 	/**
 	 * Every block starts by registering a new block type definition.
@@ -41,12 +32,31 @@
 		 * The block inserter will show this name.
 		 */
 		title: __( 'Rèsumè Timeline', 'resume-block' ),
+		description: __( 'Creates a timeline, displaying history of professional experiences.', 'resume-block' ),
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
 		 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
 		 */
 		category: 'layout',
+		
+		// Register block styles.
+		styles: [
+			// Mark style as default.
+			{
+					name: 'default',
+					label: __( 'Left-to-Right', 'resume-block' ),
+					isDefault: true
+			},
+			{
+					name: 'centered',
+					label: __( 'Centered, Alternating', 'resume-block' )
+			},
+			{
+					name: 'rtl',
+					label: __( 'Right-to-Left', 'resume-block' )
+			},
+		],
 
 		/**
 		 * Optional block extended support features.
@@ -68,7 +78,7 @@
 			// Create element
 			return el(
 				'div',
-				{ className: getClass( props ) },
+				{ className: props.className },
 				el(
 					InnerBlocks,
 					{ allowedBlocks: ALLOWED_BLOCKS },
@@ -87,7 +97,7 @@
 			// Create element
 			return el(
 				'div',
-				{ className: getClass( props ) },
+				{ className: props.className },
 				el( InnerBlocks.Content )
 			);
 		}
