@@ -55,8 +55,8 @@
 		 */
 		attributes: {
 			heading: {
-				type: 'array',
-				source: 'children',
+				type: 'string',
+				source: 'text',
 				selector: 'p',
 			},
 			classMarker: {

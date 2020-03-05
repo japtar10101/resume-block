@@ -60,8 +60,8 @@
 		 */
 		attributes: {
 			content: {
-				type: 'array',
-				source: 'children',
+				type: 'string',
+				source: 'text',
 				selector: 'span',
 			},
 			class: {
