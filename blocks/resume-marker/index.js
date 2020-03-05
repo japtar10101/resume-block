@@ -24,13 +24,13 @@
 	/**
 	 * Retrieves the class for the span tag
 	 */
-	function spanClass( className ) {
-		var returnClass = 'tag';
-		if( className ) {
-			returnClass += ' ' + className;
-		}
-		return returnClass;
-	}
+	// function spanClass( className ) {
+	// 	var returnClass = 'tag';
+	// 	if( className ) {
+	// 		returnClass += ' ' + className;
+	// 	}
+	// 	return returnClass;
+	// }
 
 	/**
 	 * Every block starts by registering a new block type definition.
@@ -54,6 +54,7 @@
 		 * Only allow this block when it is nested in a Resume Timeline block.
 		 */
 		parent: [ 'resume-block/resume-timeline' ],
+
 		/**
 		 * Attributes
 		 */
@@ -106,7 +107,7 @@
 				el( RichText, {
 					tagName: 'span',
 					inline: true,
-					className: spanClass( props.attributes.class ),
+					className: 'tag',
 					onChange: onChangeContent,
 					value: content,
 					placeholder: __( 'Enter year, or other relevant text', 'resume-block' )
@@ -127,7 +128,7 @@
 				{ },
 				el( RichText.Content, {
 					tagName: 'span',
-					className: spanClass( props.attributes.class ),
+					className: 'tag',
 					value: props.attributes.content,
 				} )
 			);
