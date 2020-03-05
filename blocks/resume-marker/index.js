@@ -75,8 +75,8 @@
 		 */
 		example: {
 			attributes: {
-				content: [ __( 'Mark', 'resume-block' ) ],
-				class: 'tag is-medium',
+				content: [ __( 'Marker', 'resume-block' ) ],
+				class: 'is-medium is-primary',
 			},
 		},
 		/**
@@ -108,6 +108,7 @@
 					className: spanClass( props.attributes.class ),
 					onChange: onChangeContent,
 					value: content,
+					placeholder: 'Enter year, or other relevant text'
 				} )
 			);
 			return ;
