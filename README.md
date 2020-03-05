@@ -26,7 +26,7 @@ Intended to work along-side with [Game Dev Portfolio](https://github.com/japtar1
 
 ## Changelog
 
-See `CHANGELOG.md`
+See [CHANGELOG.md](/CHANGELOG.md)
 
 ### Versioning
 
