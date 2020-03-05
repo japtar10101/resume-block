@@ -18,7 +18,9 @@
 	 * Retrieves Inner block. Setup to only allow paragraphs (for the time being)
 	 */
 	var InnerBlocks = blockEditor.InnerBlocks;
-
+	/**
+	 * Constants
+	 */
 	// Define the blocks that are allowed
 	const ALLOWED_BLOCKS = [ 'resume-block/resume-entry', 'resume-block/resume-image' ];
 	
