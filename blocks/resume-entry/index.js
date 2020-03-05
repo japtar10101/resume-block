@@ -1,4 +1,4 @@
-( function( blocks, element, blockEditor, i18n ) {
+( function( blocks, element, blockEditor, i18n /*, plugins, editPost*/ ) {
 		/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
@@ -23,6 +23,8 @@
 	 * Retrieves Inner block. Setup to only allow paragraphs (for the time being)
 	 */
 	var InnerBlocks = blockEditor.InnerBlocks;
+	// var registerPlugin = plugins.registerPlugin;
+	// var pluginSidebar = editPost.PluginSidebar;
 
 	/**
 	 * Every block starts by registering a new block type definition.
@@ -57,6 +59,24 @@
 				source: 'children',
 				selector: 'p',
 			},
+			classMarker: {
+				type: 'string',
+				source: 'attribute',
+				selector: 'div',
+				attribute: 'class',
+			},
+			classContent: {
+				type: 'string',
+				source: 'attribute',
+				selector: 'div',
+				attribute: 'class',
+			},
+			classHeading: {
+				type: 'string',
+				source: 'attribute',
+				selector: 'p',
+				attribute: 'class',
+			}
 		},
 		/**
 		 * Example string
@@ -146,6 +166,23 @@
 			);
 		}
 	} );
+
+	/**
+	 * Edit sidebar.
+	 * @see https://developer.wordpress.org/block-editor/tutorials/plugin-sidebar-0/
+	 */
+	// registerPlugin( 'resume-block/resume-marker', {
+	// 	render: function() {
+	// 		return el( PluginSidebar,
+	// 			{
+	// 				name: 'resume-block/resume-marker',
+	// 				icon: 'tag',
+	// 				title: __( 'Marker', 'resume-block' ),
+	// 			},
+	// 			'Marker'
+	// 		);
+	// 	},
+	// } );
 } )(
 	window.wp.blocks,
 	window.wp.element,
