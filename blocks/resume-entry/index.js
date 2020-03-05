@@ -84,11 +84,6 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function( props ) {
-			// return el(
-			// 	'p',
-			// 	{ className: props.className },
-			// 	__( 'Hello from the editor!', 'resume-block' )
-			// );
 			var content = props.attributes.content;
 			function onChangeContent( newContent ) {
 				props.setAttributes( { content: newContent } );
@@ -110,6 +105,7 @@
 							className: 'heading',
 							onChange: onChangeContent,
 							value: content,
+							placeholder: 'Enter heading here'
 						}
 					), el(
 						InnerBlocks
@@ -125,12 +121,7 @@
 		 *
 		 * @return {Element}       Element to render.
 		 */
-		save: function() {
-			// return el(
-			// 	'p',
-			// 	{},
-			// 	__( 'Hello from the saved content!', 'resume-block' )
-			// );
+		save: function( props ) {
 			return el(
 				'div',
 				{ },
