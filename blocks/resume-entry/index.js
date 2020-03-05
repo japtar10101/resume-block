@@ -62,21 +62,35 @@
 			classMarker: {
 				type: 'string',
 				source: 'attribute',
-				selector: 'div',
+				selector: 'div.timeline-marker',
 				attribute: 'class',
 			},
 			classContent: {
 				type: 'string',
 				source: 'attribute',
-				selector: 'div',
+				selector: 'div.timeline-content',
 				attribute: 'class',
 			},
 			classHeading: {
 				type: 'string',
 				source: 'attribute',
-				selector: 'p',
+				selector: 'p.heading',
 				attribute: 'class',
-			}
+			},
+			markerIcon: {
+				type: 'string',
+				source: 'html',
+				selector: 'div.timeline-marker',
+			},
+			markerImageUrl: {
+				type: 'string',
+				source: 'attribute',
+				selector: 'img',
+				attribute: 'src',
+			},
+			markerImageId: {
+				type: 'number',
+			},
 		},
 		/**
 		 * Example string
