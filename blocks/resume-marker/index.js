@@ -100,6 +100,16 @@
 			function onChangeContent( newContent ) {
 				props.setAttributes( { content: newContent } );
 			}
+			function onSplit( value ) {
+				if ( ! value ) {
+					return blocks.createBlock( 'resume-block/resume-entry' );
+				} else {
+					return blocks.createBlock(
+						'resume-block/resume-marker',
+						{ content: value }
+					);
+				}
+			}
 
 			return el(
 				'header',
@@ -108,9 +118,10 @@
 					tagName: 'span',
 					inline: true,
 					className: 'tag',
-					onChange: onChangeContent,
 					value: content,
-					placeholder: __( 'Enter year, or other relevant text', 'resume-block' )
+					placeholder: __( 'Enter year, or other relevant text', 'resume-block' ),
+					onChange: onChangeContent,
+					onSplit: onSplit
 				} )
 			);
 		},
