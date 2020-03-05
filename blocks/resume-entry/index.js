@@ -25,7 +25,22 @@
 	var InnerBlocks = blockEditor.InnerBlocks;
 	// var registerPlugin = plugins.registerPlugin;
 	// var pluginSidebar = editPost.PluginSidebar;
-
+	/**
+	 * Constants
+	 */
+	const TEMPLATE = [
+		[
+			'core/paragraph',
+			{
+				className: 'subtitle',
+				placeholder: __( 'Position Title (Company Name)', 'resume-block' ),
+			},
+			'core/list',
+			{
+				placeholder: __( 'Achievements', 'resume-block' ),
+			},
+		],
+	];
 	/**
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
@@ -174,7 +189,8 @@
 							value: props.attributes.heading
 						}
 					), el(
-						InnerBlocks.Content
+						InnerBlocks.Content,
+						{ template: { TEMPLATE } }
 					)
 				)
 			);
