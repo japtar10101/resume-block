@@ -1,9 +1,8 @@
 # Rèsumè
 
 - Contributors: Taro Omiya
-- Donate link: https://example.com/
 - Tags: comments
-- Requires at least: 4.5
+- Requires at least: 5.0.0
 - Tested up to: 5.3.2
 - Requires PHP: 5.6
 - Stable tag: 2020.1.0
