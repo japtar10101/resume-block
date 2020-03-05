@@ -6,67 +6,33 @@
 - Requires at least: 4.5
 - Tested up to: 5.3.2
 - Requires PHP: 5.6
-- Stable tag: 0.1.0
+- Stable tag: 2020.1.0
 - License: GPLv2 or later
 - License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Wordpress plugin that uses Bulma to create a timeline layout, convenient for creating a resume page.
-
 ## Description
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
-
-A few notes about the sections above:
-
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
-
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
-
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+Wordpress plugin that uses Bulma to create a timeline layout, convenient for creating a resume page.
+Intended to work along-side with [Game Dev Portfolio](https://github.com/japtar10101/game-dev-portfolio) theme.
 
 ## Installation
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
-
-## Frequently Asked Questions
-
-### A question that someone might have
-
-An answer to that question.
-
-### What about foo bar?
-
-Answer to foo bar dilemma.
+1. In your admin panel, go to Plugins > Add New.
+2. Click Upload Plugin and Choose File, then select the plugin's .zip file. Click Install Now.
+3. Click Activate to use your new plugin right away.
 
 ## Screenshots
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+![Preview](/preview.png?raw=true "Preview Screenshot")
 
 ## Changelog
 
 See `CHANGELOG.md`
+
+### Versioning
+
+This theme uses a version naming scheme similar to [Unity](https://unity.com/): `[Year].[Feature].[Bug Fix]`
+
+- `[Year]` - indicates the year the theme was released
+- `[Feature]` - a 1-indexed number indicating the number of feature releases in that year.
+- `[Bug Fix]` - a 0-indexed number indicating the number of bug-fix release building on top of a prior feature release.
