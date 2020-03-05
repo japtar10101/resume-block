@@ -1,4 +1,4 @@
-( function( blocks, editor, i18n, element/*, plugins, editPost*/ ) {
+( function( blocks, element, blockEditor, i18n /*, plugins, editPost*/ ) {
 	/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
@@ -18,7 +18,7 @@
 	 * Retrieves the rich-text editor.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-editor/
 	 */
-	var RichText = editor.RichText;
+	var RichText = blockEditor.RichText;
 	// var registerPlugin = plugins.registerPlugin;
 	// var pluginSidebar = editPost.PluginSidebar;
 	/**
@@ -105,13 +105,13 @@
 				{ className: props.className },
 				el( RichText, {
 					tagName: 'span',
+					inline: true,
 					className: spanClass( props.attributes.class ),
 					onChange: onChangeContent,
 					value: content,
-					placeholder: 'Enter year, or other relevant text'
+					placeholder: __( 'Enter year, or other relevant text', 'resume-block' )
 				} )
 			);
-			return ;
 		},
 
 		/**
@@ -152,9 +152,9 @@
 	// } );
 } )(
 	window.wp.blocks,
-	window.wp.editor,
-	window.wp.i18n,
 	window.wp.element,
+	window.wp.blockEditor,
+	window.wp.i18n,
 	// window.wp.plugins,
 	// window.wp.editPost,
 );

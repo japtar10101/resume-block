@@ -1,4 +1,4 @@
-( function( blocks, editor, i18n, element, blockEditor ) {
+( function( blocks, element, blockEditor, i18n ) {
 		/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
@@ -18,7 +18,7 @@
 	 * Retrieves the rich-text editor.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-editor/
 	 */
-	var RichText = editor.RichText;
+	var RichText = blockEditor.RichText;
 	/**
 	 * Retrieves Inner block. Setup to only allow paragraphs (for the time being)
 	 */
@@ -35,7 +35,7 @@
 		 */
 		title: __( 'Entry', 'resume-block' ),
 		description: __( 'An entry in the timeline, to list a professional experience. Can contain other blocks.', 'resume-block' ),
-		//icon: 'tag',
+		icon: 'format-aside',
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
@@ -52,7 +52,7 @@
 		 * Attributes
 		 */
 		attributes: {
-			content: {
+			heading: {
 				type: 'array',
 				source: 'children',
 				selector: 'p',
@@ -63,7 +63,7 @@
 		 */
 		example: {
 			attributes: {
-				content: [ __( 'Month Year', 'resume-block' ) ],
+				heading: [ __( 'Month Year', 'resume-block' ) ],
 			},
 		},
 
@@ -84,9 +84,9 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function( props ) {
-			var content = props.attributes.content;
+			var heading = props.attributes.heading;
 			function onChangeContent( newContent ) {
-				props.setAttributes( { content: newContent } );
+				props.setAttributes( { heading: newContent } );
 			}
 
 			return el(
@@ -102,10 +102,11 @@
 						RichText,
 						{
 							tagName: 'p',
+							inline: true,
 							className: 'heading',
 							onChange: onChangeContent,
-							value: content,
-							placeholder: 'Enter heading here'
+							value: heading,
+							placeholder: __( 'Enter heading here', 'resume-block' )
 						}
 					), el(
 						InnerBlocks
@@ -136,7 +137,7 @@
 						{
 							tagName: 'p',
 							className: 'heading',
-							value: props.attributes.content
+							value: props.attributes.heading
 						}
 					), el(
 						InnerBlocks.Content
@@ -147,8 +148,7 @@
 	} );
 } )(
 	window.wp.blocks,
-	window.wp.editor,
-	window.wp.i18n,
 	window.wp.element,
 	window.wp.blockEditor,
+	window.wp.i18n
 );

@@ -28,8 +28,9 @@ if ( ! function_exists( 'resume_entry_block_init' ) ) :
 				'wp-blocks',
 				'wp-i18n',
 				'wp-element',
-				'wp-editor',
 				'wp-block-editor'
+				// 'wp-plugins',
+				// 'wp-edit-post'
 			),
 			filemtime( "$dir/$index_js" )
 		);
@@ -42,18 +43,9 @@ if ( ! function_exists( 'resume_entry_block_init' ) ) :
 			filemtime( "$dir/$editor_css" )
 		);
 
-		$style_css = 'resume-entry/style.css';
-		wp_register_style(
-			'resume-entry-block',
-			plugins_url( $style_css, __FILE__ ),
-			array(),
-			filemtime( "$dir/$style_css" )
-		);
-
 		register_block_type( 'resume-block/resume-entry', array(
 			'editor_script' => 'resume-entry-block-editor',
 			'editor_style'  => 'resume-entry-block-editor',
-			'style'         => 'resume-entry-block',
 		) );
 	}
 endif;

@@ -28,7 +28,7 @@ if ( ! function_exists( 'resume_marker_block_init' ) ) :
 				'wp-blocks',
 				'wp-i18n',
 				'wp-element',
-				'wp-editor',
+				'wp-block-editor'
 				// 'wp-plugins',
 				// 'wp-edit-post'
 			),
@@ -43,18 +43,9 @@ if ( ! function_exists( 'resume_marker_block_init' ) ) :
 			filemtime( "$dir/$editor_css" )
 		);
 
-		$style_css = 'resume-marker/style.css';
-		wp_register_style(
-			'resume-marker-block',
-			plugins_url( $style_css, __FILE__ ),
-			array(),
-			filemtime( "$dir/$style_css" )
-		);
-
 		register_block_type( 'resume-block/resume-marker', array(
 			'editor_script' => 'resume-marker-block-editor',
 			'editor_style'  => 'resume-marker-block-editor',
-			'style'         => 'resume-marker-block',
 		) );
 	}
 endif;
