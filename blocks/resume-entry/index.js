@@ -1,19 +1,28 @@
-( function( wp ) {
-	/**
+( function( blocks, editor, i18n, element, blockEditor ) {
+		/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
 	 */
-	var registerBlockType = wp.blocks.registerBlockType;
+	var registerBlockType = blocks.registerBlockType;
 	/**
 	 * Returns a new element of given type. Element is an abstraction layer atop React.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-element/
 	 */
-	var el = wp.element.createElement;
+	var el = element.createElement;
 	/**
 	 * Retrieves the translation of text.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-i18n/
 	 */
-	var __ = wp.i18n.__;
+	var __ = i18n.__;
+	/**
+	 * Retrieves the rich-text editor.
+	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-editor/
+	 */
+	var RichText = editor.RichText;
+	/**
+	 * Retrieves Inner block. Setup to only allow paragraphs (for the time being)
+	 */
+	var InnerBlocks = blockEditor.InnerBlocks;
 
 	/**
 	 * Every block starts by registering a new block type definition.
@@ -24,7 +33,9 @@
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'Rèsumè Entry', 'resume-block' ),
+		title: __( 'Entry', 'resume-block' ),
+		description: __( 'An entry in the timeline, to list a professional experience. Can contain other blocks.', 'resume-block' ),
+		//icon: 'tag',
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
@@ -36,6 +47,25 @@
 		 * Only allow this block when it is nested in a Resume Timeline block.
 		 */
 		parent: [ 'resume-block/resume-timeline' ],
+
+		/**
+		 * Attributes
+		 */
+		attributes: {
+			content: {
+				type: 'array',
+				source: 'children',
+				selector: 'p',
+			},
+		},
+		/**
+		 * Example string
+		 */
+		example: {
+			attributes: {
+				content: [ __( 'Month Year', 'resume-block' ) ],
+			},
+		},
 
 		/**
 		 * Optional block extended support features.
@@ -54,10 +84,37 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function( props ) {
+			// return el(
+			// 	'p',
+			// 	{ className: props.className },
+			// 	__( 'Hello from the editor!', 'resume-block' )
+			// );
+			var content = props.attributes.content;
+			function onChangeContent( newContent ) {
+				props.setAttributes( { content: newContent } );
+			}
+
 			return el(
-				'p',
+				'div',
 				{ className: props.className },
-				__( 'Hello from the editor!', 'resume-block' )
+				el(
+					'div',
+					{ className: 'timeline-marker' }
+				), el(
+					'div',
+					{ className: 'timeline-content' },
+					el(
+						RichText,
+						{
+							tagName: 'p',
+							className: 'heading',
+							onChange: onChangeContent,
+							value: content,
+						}
+					), el(
+						InnerBlocks
+					)
+				)
 			);
 		},
 
@@ -69,13 +126,38 @@
 		 * @return {Element}       Element to render.
 		 */
 		save: function() {
+			// return el(
+			// 	'p',
+			// 	{},
+			// 	__( 'Hello from the saved content!', 'resume-block' )
+			// );
 			return el(
-				'p',
-				{},
-				__( 'Hello from the saved content!', 'resume-block' )
+				'div',
+				{ },
+				el(
+					'div',
+					{ className: 'timeline-marker' }
+				), el(
+					'div',
+					{ className: 'timeline-content' },
+					el(
+						RichText.Content,
+						{
+							tagName: 'p',
+							className: 'heading',
+							value: props.attributes.content
+						}
+					), el(
+						InnerBlocks.Content
+					)
+				)
 			);
 		}
 	} );
 } )(
-	window.wp
+	window.wp.blocks,
+	window.wp.editor,
+	window.wp.i18n,
+	window.wp.element,
+	window.wp.blockEditor,
 );
