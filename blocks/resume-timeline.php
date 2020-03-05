@@ -41,18 +41,9 @@ if ( ! function_exists( 'resume_timeline_block_init' ) ) :
 			filemtime( "$dir/$editor_css" )
 		);
 
-		$style_css = 'resume-timeline/style.css';
-		wp_register_style(
-			'resume-timeline-block',
-			plugins_url( $style_css, __FILE__ ),
-			array(),
-			filemtime( "$dir/$style_css" )
-		);
-
 		register_block_type( 'resume-block/resume-timeline', array(
 			'editor_script' => 'resume-timeline-block-editor',
 			'editor_style'  => 'resume-timeline-block-editor',
-			'style'         => 'resume-timeline-block',
 		) );
 	}
 endif;
