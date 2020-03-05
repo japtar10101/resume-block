@@ -56,7 +56,7 @@
 
 /* Edited by Taro Omiya: if there are no markers at the bottom of the timeline, remove any padding from the last entry. */
 .wp-block-resume-block-resume-timeline .wp-block-resume-block-resume-entry:last-child {
-	padding-bottom: 0;
+	padding-bottom: 1em;
 }
 
 .wp-block-resume-block-resume-timeline .wp-block-resume-block-resume-entry .timeline-marker {
