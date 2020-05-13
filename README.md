@@ -1,11 +1,12 @@
 # Rèsumè
+[![Mirroring](https://github.com/japtar10101/resume-block/workflows/Mirroring/badge.svg)](https://bitbucket.org/OmiyaGames/resume-block) [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I3I51KS8F)
 
 - Contributors: Taro Omiya
 - Tags: comments
 - Requires at least: 5.0.0
 - Tested up to: 5.3.2
 - Requires PHP: 5.6
-- Stable tag: 2020.1.1
+- Stable tag: 2020.1.2
 - License: GPLv2 or later
 - License URI: https://www.gnu.org/licenses/gpl-2.0.html
 

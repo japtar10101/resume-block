@@ -3,7 +3,7 @@
  * Plugin Name: Resume Block
  * Plugin URI: https://github.com/japtar10101/resume-block
  * Description: Allow creating a timeline-like visuals with Gutenberg blocks, making it useful for creating a resume page.
- * Version: 2020.1.1
+ * Version: 2020.1.2
  * Author: Taro Omiya
  * Author URI: https://taroomiya.com
  * Text Domain: resume-block
